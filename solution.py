@@ -1,6 +1,5 @@
 import math
 
-
 def answer(area):
   
 	list=[]
