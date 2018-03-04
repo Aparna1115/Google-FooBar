@@ -4,7 +4,8 @@ import math
 def answer(area):
   
 	list=[]
-  diff=area
+  
+	diff=area
   
 	while (diff!=0) : 
 	  
