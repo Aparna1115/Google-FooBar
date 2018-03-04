@@ -1,34 +1,104 @@
-def answer(n,b):
-  listFinal=[]
-  l=len(listFinal)
-  listFinal.append(n)
-  k = len(n)
-  diff=0
-  count=0
-  while(count == 0):
-  
-    listAsc = ''.join(sorted(n))
-    yVal=int(listAsc, b) 
-    listDes = ''.join(sorted(n,reverse=True)) 
-    xVal = int(listDes, b)
-    zVal = toStr(xVal - yVal, b)
-    zvalue = int(zVal, b)
-    z = toStr(zvalue, b)
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
-    if (len(z)< k): 
-      z = z.zfill(k)
+public class answer{
+ 
+	    public static int answer(String n, int b) { 
+
+	        // Your code goes here.
+	        
+			ArrayList<String> listFinal = new ArrayList();
+			int l = listFinal.size();
+			listFinal.add(n);
+			int i, count = 0;
+			int diff=0;
+			int k = n.length();
+			String z = "";
+			while (count ==0) {
 				
-    n = z
-    for z in listFinal:
-      diff=len(listFinal) - j
-      count=1
-  			
-  listFinal.append(z)
-  return diff
+				ArrayList<String> digits = getDigits(n);
+				ArrayList<String> listAsc = sortAsc(digits); // Sort in ascending order
+		
+				int yVal = Integer.parseInt(arraylist2String(digits), b); // Convert list to Int wrt base
+		
+				ArrayList<String> list = getDigits(n);
+				ArrayList<String> listDes = sortDes(list); // Sort in descending order
+			
+				int xVal = Integer.parseInt(arraylist2String(listDes), b); // Convert list to Int wrt base
+			
+				String zVal = Integer.toString(xVal - yVal, b); // diff between x and y
+				int zvalue = Integer.parseInt(zVal, b);
+				z = Integer.toString(zvalue, b);
+
+				if (z.length() < k) {
+					z = String.format("%0" + k + "d", zvalue);
+				
+				}
+				n = z;
+			
+
+				for (int j = 0; j < listFinal.size(); j++) {
+					
+					if (z.equals(listFinal.get(j))) {
+						System.out.println(listFinal.size() - j);
+						diff=listFinal.size() - j;
+						count=1;	
+
+					}
+				
+				}
+				listFinal.add(z);
+
+			}
+			
+		
+			return diff;
+	}
 	
-def toStr(n,base):
-  convertString = "0123456789ABCDEF"
-  if n < base:
-    return convertString[n]
-  else:
-    return toStr(n//base,base) + convertString[n%base]
+		public static ArrayList<String> getDigits(String num) {
+			ArrayList<String> digits = new ArrayList<String>();
+			collectDigits(num, digits);
+			return digits;
+			
+		}
+
+		private static void collectDigits(String num, ArrayList<String> digits) {
+			int i;
+			for (i = 0; i < num.length(); i++) {
+				digits.add(Character.toString(num.charAt(i)));
+			}
+
+		}
+
+		public static ArrayList<String> sortAsc(ArrayList<String> m) {
+			Collections.sort(m);
+
+			return (m);
+
+		}
+
+		public static ArrayList<String> sortDes(ArrayList<String> list) {
+			Collections.sort(list);
+			Collections.reverse(list);
+
+			return (list);
+
+		}
+
+
+		public static String arraylist2String(ArrayList<String> list) {
+
+			StringBuilder numString = new StringBuilder();
+			int i;
+			for (i = 0; i < list.size(); i++) {
+				numString.append(list.get(i));
+
+			}
+			String result = numString.toString();
+			return (result);
+		}
+
+
+	}
